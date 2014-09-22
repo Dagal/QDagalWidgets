@@ -41,7 +41,7 @@ QString QDagalLedPlugin::group() const
 
 QIcon QDagalLedPlugin::icon() const
 {
-	return QIcon(":/QDagalLed.xpm");
+	return QIcon(":/LedRouge.xpm");
 }
 
 QString QDagalLedPlugin::toolTip() const
