@@ -36,7 +36,7 @@ QString QDagalLedPlugin::name() const
 
 QString QDagalLedPlugin::group() const
 {
-	return QLatin1String("");
+	return QLatin1String("Dagal Widgets");
 }
 
 QIcon QDagalLedPlugin::icon() const
