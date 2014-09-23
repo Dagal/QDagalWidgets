@@ -14,15 +14,17 @@ bool QDagalLed::state() const
 
 void QDagalLed::paintEvent(QPaintEvent* event)
 {
+	Q_UNUSED(event);
+
 	QPainter painter(this);
-	QPen pen;
-	pen.setColor(m_state?Qt::red:Qt::gray);
-	pen.setWidth(1);
-	painter.setPen(pen);
+//	QPen pen;
+//	pen.setColor(m_state?Qt::red:Qt::gray);
+//	pen.setWidth(1);
+//	painter.setPen(pen);
 	QBrush brush(Qt::SolidPattern);
 	brush.setColor(m_state?Qt::red:Qt::gray);
 	painter.setBrush(brush);
-	painter.drawEllipse(0,0,10,10);
+	painter.drawEllipse(10,10,20,20);
 }
 
 void QDagalLed::setState(bool value)

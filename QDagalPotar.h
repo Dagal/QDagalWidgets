@@ -1,14 +1,23 @@
-#ifndef QDAGALPOTAR_H
+﻿#ifndef QDAGALPOTAR_H
 #define QDAGALPOTAR_H
 
-#include <QWidget>
+#include <QAbstractSlider>
+#include <QPainter>
 
-class QDagalPotar : public QWidget
+class QDagalPotar : public QAbstractSlider
 {
 	Q_OBJECT
 
 public:
 	QDagalPotar(QWidget *parent = 0);
+
+	void paintEvent(QPaintEvent *event);
+
+public slots:
+
+signals:
+
+private:
 };
 
 #endif
