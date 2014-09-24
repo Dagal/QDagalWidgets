@@ -14,6 +14,7 @@ public:
 	void paintEvent(QPaintEvent *event);
 
 public slots:
+	void setValue(int value);
 
 signals:
 

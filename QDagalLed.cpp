@@ -4,7 +4,8 @@ QDagalLed::QDagalLed(QWidget *parent) :
 	QWidget(parent),
 	m_state(false)
 {
-
+	setMinimumWidth(40);
+	setMinimumHeight(40);
 }
 
 bool QDagalLed::state() const
