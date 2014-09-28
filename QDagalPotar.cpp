@@ -8,8 +8,8 @@ QDagalPotar::QDagalPotar(QWidget *parent) :
 	setValue(0);
 	setMinimum(0);
 	setMaximum(127);
-	setMinimumWidth(60);
-	setMinimumHeight(60);
+	setMinimumWidth(30);
+	setMinimumHeight(30);
 }
 
 void QDagalPotar::paintEvent(QPaintEvent *event)
