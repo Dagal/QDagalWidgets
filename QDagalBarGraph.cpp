@@ -5,7 +5,7 @@ QDagalBarGraph::QDagalBarGraph(QWidget *parent) :
 	m_value(0)
 {
 	setMinimumWidth(16);
-	setMinimumHeight(81);
+	setMinimumHeight(16);
 }
 
 int QDagalBarGraph::value() const
@@ -17,49 +17,31 @@ void QDagalBarGraph::paintEvent(QPaintEvent *event)
 {
 	Q_UNUSED(event);
 
+	int tailleUtile = height() - 6; // 6 = 2 x 3 de bordure
+	int nbrLed = tailleUtile / 13; // 13 = taille de led + 3 de bordure
+	int totBordureInterne = tailleUtile - nbrLed * 10;
+	float tailleBordureInterne = 1.0 * totBordureInterne / (nbrLed - 1);
+
 	QPainter painter(this);
 
 	QPen penGray;
 	penGray.setColor(Qt::gray);
 	QBrush brush(Qt::SolidPattern);
 
-	if (m_value > 100)
-		brush.setColor(Qt::red);
-	else
-		brush.setColor(Qt::gray);
-	painter.setBrush(brush);
-	painter.drawRect(0,3,10,10);
-	if (m_value > 80)
-		brush.setColor(Qt::yellow);
-	else
-		brush.setColor(Qt::gray);
-	painter.setBrush(brush);
-	painter.drawRect(0,16,10,10);
-	if (m_value > 60)
-		brush.setColor(Qt::yellow);
-	else
-		brush.setColor(Qt::gray);
-	painter.setBrush(brush);
-	painter.drawRect(0,29,10,10);
-	if (m_value > 40)
-		brush.setColor(Qt::green);
-	else
-		brush.setColor(Qt::gray);
-	painter.setBrush(brush);
-	painter.drawRect(0,42,10,10);
-	if (m_value > 20)
-		brush.setColor(Qt::green);
-	else
-		brush.setColor(Qt::gray);
-	painter.setBrush(brush);
-	painter.drawRect(0,55,10,10);
-	if (m_value > 0)
-		brush.setColor(Qt::green);
-	else
-		brush.setColor(Qt::gray);
-	painter.setBrush(brush);
-	painter.drawRect(0,68,10,10);
-
+	float i;
+	for (i = 3.0; i < tailleUtile; i += 10 + tailleBordureInterne)
+	{
+		int pourcentage = (tailleUtile - i) / tailleUtile * 100;
+		if (m_value > pourcentage)
+		{
+			QColor color(pourcentage * 255 / 100, (100 - pourcentage) * 255 / 100, 0);
+			brush.setColor(color);
+		}
+		else
+			brush.setColor(Qt::gray);
+		painter.setBrush(brush);
+		painter.drawRect(3,i,10,10);
+	}
 }
 
 void QDagalBarGraph::setValue(int value)
