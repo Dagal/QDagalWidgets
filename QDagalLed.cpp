@@ -4,8 +4,8 @@ QDagalLed::QDagalLed(QWidget *parent) :
 	QWidget(parent),
 	m_state(false)
 {
-	setMinimumWidth(40);
-	setMinimumHeight(40);
+	setMinimumWidth(16);
+	setMinimumHeight(16);
 }
 
 bool QDagalLed::state() const
@@ -17,24 +17,30 @@ void QDagalLed::paintEvent(QPaintEvent* event)
 {
 	Q_UNUSED(event);
 
+	int centerX = width() / 2;
+	int centerY = height() / 2;
+	int radius = ((centerX < centerY)?centerX:centerY) - 3;
+
 	QPainter painter(this);
-//	QPen pen;
-//	pen.setColor(m_state?Qt::red:Qt::gray);
-//	pen.setWidth(1);
-//	painter.setPen(pen);
+	QPen pen;
+	pen.setColor(Qt::gray);
+	pen.setWidth(2);
+	painter.setPen(pen);
 	QBrush brush(Qt::SolidPattern);
 	brush.setColor(m_state?Qt::red:Qt::gray);
 	painter.setBrush(brush);
-	painter.drawEllipse(10,10,20,20);
+	painter.drawEllipse(centerX - radius,
+											centerY - radius,
+											radius * 2,
+											radius * 2);
 }
 
-void QDagalLed::setState(bool value)
+void QDagalLed::setState(bool state)
 {
-	if (m_state != value)
+	if (m_state != state)
 	{
-		m_state = value;
-		emit(stateChanged(value));
+		m_state = state;
+		emit(stateChanged(state));
 		update();
 	}
 }
-

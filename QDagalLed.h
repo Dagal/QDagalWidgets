@@ -13,14 +13,14 @@ class QDagalLed : public QWidget
 public:
 	QDagalLed(QWidget *parent = 0);
 
-	bool state() const;
 	void paintEvent(QPaintEvent* event);
+	bool state() const;
 
 public slots:
-	void setState(bool value);
+	void setState(bool state);
 
 signals:
-	void stateChanged(bool value);
+	void stateChanged(bool state);
 
 private:
 	bool m_state;
