@@ -5,7 +5,7 @@ QDagalBarGraph::QDagalBarGraph(QWidget *parent) :
 	m_value(0)
 {
 	setMinimumWidth(16);
-	setMinimumHeight(16);
+	setMinimumHeight(32);
 }
 
 int QDagalBarGraph::value() const
@@ -40,7 +40,7 @@ void QDagalBarGraph::paintEvent(QPaintEvent *event)
 		else
 			brush.setColor(Qt::gray);
 		painter.setBrush(brush);
-		painter.drawRect(3,i,10,10);
+		painter.drawRect(width() / 2 - 5,i,10,10);
 	}
 }
 
