@@ -28,18 +28,16 @@ void QDagalPotar::paintEvent(QPaintEvent *event)
 	QPainter painter(this);
 
 	QPen pen;
-	pen.setColor(Qt::blue);
-	pen.setWidth(1);
+	pen.setColor(Qt::black);
+	pen.setWidth(3);
 	painter.setPen(pen);
 
 	QBrush brush(Qt::SolidPattern);
-	brush.setColor(Qt::white);
+	brush.setColor(Qt::gray);
 	painter.setBrush(brush);
 	painter.drawEllipse(centerX - radius, centerY - radius,
 											radius * 2.0, radius * 2.0);
 
-	pen.setWidth(3);
-	painter.setPen(pen);
 	painter.drawEllipse(centerX - radius / 2.0, centerY - radius / 2.0,
 											radius, radius);
 
