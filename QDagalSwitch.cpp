@@ -32,8 +32,11 @@ void QDagalSwitch::paintEvent(QPaintEvent* event)
 													largeur / 2,
 													largeur / 2);
 
+	brush.setStyle(Qt::HorPattern);
+	brush.setColor(Qt::black);
+	painter.setBrush(brush);
 	painter.drawEllipse(centerX - largeur * 0.4,
-											centerY + largeur * (m_value == 0)?0.1:-0.9,
+											centerY + largeur * (0.1 - m_value / 127.0),
 											largeur * 0.8,
 											largeur * 0.8);
 }
