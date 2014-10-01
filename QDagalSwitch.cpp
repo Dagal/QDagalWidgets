@@ -8,6 +8,16 @@ QDagalSwitch::QDagalSwitch(QWidget *parent) :
 	setMinimumHeight(46);
 }
 
+void QDagalSwitch::mousePressEvent(QMouseEvent* event)
+{
+	Q_UNUSED(event);
+	if (m_value == 0)
+		m_value = 127;
+	else
+		m_value = 0;
+	update();
+}
+
 void QDagalSwitch::paintEvent(QPaintEvent* event)
 {
 	Q_UNUSED(event);

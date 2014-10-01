@@ -13,6 +13,7 @@ class QDagalSwitch : public QWidget
 public:
 	QDagalSwitch(QWidget *parent = 0);
 
+	void mousePressEvent(QMouseEvent* event);
 	void paintEvent(QPaintEvent* event);
 	int value() const;
 
