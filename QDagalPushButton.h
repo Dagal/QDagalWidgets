@@ -1,7 +1,9 @@
-#ifndef QDAGALPUSHBUTTON_H
+﻿#ifndef QDAGALPUSHBUTTON_H
 #define QDAGALPUSHBUTTON_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QLabel>
 
 class QDagalPushButton : public QWidget
 {
@@ -9,6 +11,10 @@ class QDagalPushButton : public QWidget
 
 public:
 	QDagalPushButton(QWidget *parent = 0);
+
+private:
+	QPixmap image1;
+	QPixmap image2;
 };
 
 #endif
